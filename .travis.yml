@@ -1,0 +1,16 @@
+sudo: false
+language: node_js
+node_js:
+  - "node"
+  - "5"
+  - "4"
+  - "0.12"
+  - "0.10"
+branches:
+  only:
+    - master
+
+# codeclimate after script
+after_script:
+  - npm install -g codeclimate-test-reporter
+  - codeclimate-test-reporter < coverage/lcov.info

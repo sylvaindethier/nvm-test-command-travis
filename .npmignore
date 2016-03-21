@@ -1,0 +1,12 @@
+# Dot files
+.*
+!.npmignore
+
+# Sources
+src
+
+# Tests
+test
+
+# Misc
+scripts
