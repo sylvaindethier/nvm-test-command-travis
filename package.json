@@ -2,18 +2,19 @@
   "name": "nvm-test-command-travis",
   "version": "0.0.0",
   "description": "Travis command for `nvm-test`",
-  "main": "dist/index.js",
+  "main": "dist/command.js",
   "scripts": {
-    "-start": "NODE_ENV=development babel-node ./src/bin.js",
-    "clean": "rimraf dist",
-    "lint": "eslint ./",
-    "prebuild": "npm run clean && npm run lint",
+    "selflink": "npm link && npm link nvm-test-command-travis",
+    "prestart": "npm run selflink && npm run build:dist",
+    "start": "NODE_ENV=development nvm-test",
+    "prebuild": "npm run lint && npm run test",
     "build": "npm run build:dist",
-    "build:dist": "NODE_ENV=production babel ./src -d ./dist",
+    "build:dist": "rimraf dist; NODE_ENV=production babel ./src -d ./dist",
+    "lint": "eslint ./",
     "test": "npm run coverage",
     "test:only": "mocha --compilers js:babel-core/register --recursive",
     "coverage": "rimraf coverage && istanbul cover _mocha -- -R spec --compilers js:babel-core/register --recursive",
-    "preversion": "npm run test && npm run build"
+    "preversion": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -35,10 +36,12 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "babel-runtime": "^6.6.1"
+    "babel-runtime": "^6.6.1",
+    "js-yaml": "^3.5.5",
+    "npmlog": "^2.0.3"
   },
   "peerDependencies": {
-    "nvm-test": "*"
+    "nvm-test": "^1.0.0-rc"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
