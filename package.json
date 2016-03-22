@@ -4,6 +4,7 @@
   "description": "Travis command for `nvm-test`",
   "main": "dist/command.js",
   "scripts": {
+    "install:peer": "npm install $(node ./scripts/peerDependencies.js)",
     "selflink": "npm link && npm link nvm-test-command-travis",
     "prestart": "npm run selflink && npm run build:dist",
     "start": "NODE_ENV=development nvm-test",

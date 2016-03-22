@@ -10,9 +10,9 @@ branches:
   only:
     - master
 
-# install extra deps before script
+# install peer dependencies before script
 before_script:
-  - "npm run install:extra"
+  - "npm run install:peer"
 
 # codeclimate after script
 after_script:
