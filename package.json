@@ -5,9 +5,11 @@
   "main": "dist/command.js",
   "scripts": {
     "install:peer": "npm install $(node ./scripts/peerDependencies.js)",
-    "selflink": "npm link && npm link nvm-test-command-travis",
-    "prestart": "npm run selflink && npm run build:dist",
+    "link:self": "npm link && npm link nvm-test-command-travis",
+    "unlink:self": "npm unlink nvm-test-command-travis && npm unlink nvm-test-command-travis -g",
+    "prestart": "npm run link:self && npm run build:dist",
     "start": "NODE_ENV=development nvm-test",
+    "poststart": "npm run unlink:self",
     "prebuild": "npm run lint && npm run test",
     "build": "npm run build:dist",
     "build:dist": "rimraf dist; NODE_ENV=production babel ./src -d ./dist",
