@@ -10,7 +10,11 @@ branches:
   only:
     - master
 
+# install extra deps before script
+before_script:
+  - "npm run install:extra"
+
 # codeclimate after script
 after_script:
-  - npm install -g codeclimate-test-reporter
-  - codeclimate-test-reporter < coverage/lcov.info
+  - "npm install -g codeclimate-test-reporter"
+  - "codeclimate-test-reporter < coverage/lcov.info"
