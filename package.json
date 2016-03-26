@@ -1,6 +1,6 @@
 {
   "name": "nvm-test-plugin-travis",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Travis plugin for `nvm-test`",
   "main": "dist/command.js",
   "scripts": {
