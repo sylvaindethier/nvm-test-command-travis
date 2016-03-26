@@ -33,12 +33,12 @@ const handler = (argv) => {
     },
     error: (code, version) => {
       log.verbose('nvm-test-version', 'error code %s for version', code, version)
-    },
+    }
   })
   const hooks = new Hooks({
     pre,
     error,
-    nvmTestVersionHooks,
+    nvmTestVersionHooks
   })
 
   // nvm-test versions
