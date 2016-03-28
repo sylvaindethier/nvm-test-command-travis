@@ -2,9 +2,9 @@ import { nvmTestVersions, Hooks } from 'nvm-test'
 import log from 'npmlog'
 import nodeVersions from './node-versions'
 
-const command = 'travis'
-const desc = 'Test using Node versions from Travis file'
-const handler = (argv) => {
+export const command = 'travis'
+export const desc = 'Test using Node versions from Travis file'
+export const handler = (argv) => {
   // get options from argv
   const { install, test, dryRun, logLevel } = argv
 
@@ -44,5 +44,3 @@ const handler = (argv) => {
   // nvm-test versions
   return nvmTestVersions(versions, { install, test, dryRun }, hooks)
 }
-
-export { command, desc, handler }
