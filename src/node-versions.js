@@ -3,15 +3,21 @@ import { join } from 'path'
 import yaml from 'js-yaml'
 
 const filename = '.travis.yml'
+const filepath = join(process.cwd(), filename)
+let travis
+try {
+  travis = yaml.safeLoad(readFileSync(filepath, 'utf8'))
+} catch (e) {} // eslint-disable-line no-empty
 
 /**
- * Get the NodeJS from the Travis file
+ * Get the NodeJS versions from the Travis file
+ * @throws {TypeError} - When
  * @return {String[]} - The NodeJS versions from the Travis file
  */
 export default function nodeVersions () {
-  // travis file from running project
-  const filepath = join(process.cwd(), filename)
-  const travis = yaml.safeLoad(readFileSync(filepath, 'utf8'))
+  if (travis === undefined) {
+    throw new Error('Can not load Travis file ' + filepath)
+  }
 
   // check travis.language is 'node_js'
   if (travis.language !== 'node_js') {
