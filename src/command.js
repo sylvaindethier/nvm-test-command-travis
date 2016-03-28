@@ -14,7 +14,13 @@ export const handler = (argv) => {
 
   // get Node versions from Travis file
   log.info('config', 'Get Node versions from Travis file')
-  const versions = nodeVersions()
+  let versions
+  try {
+    versions = nodeVersions()
+  } catch (e) {
+    log.error('config', e.toString())
+    return e.code || 1
+  }
 
   // define hooks
   const pre = (versions, { install, test, dryRun }) => {
