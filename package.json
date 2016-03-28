@@ -1,8 +1,8 @@
 {
   "name": "nvm-test-plugin-travis",
   "version": "2.0.0",
-  "description": "Travis plugin for `nvm-test`",
-  "main": "dist/command.js",
+  "description": "TravisCI plugin for nvm-test",
+  "main": "./lib/command.js",
   "scripts": {
     "install:peer": "npm install $(node ./scripts/peerDependencies.js)",
     "link:self": "npm link && npm link nvm-test-plugin-travis",
@@ -24,10 +24,11 @@
     "url": "https://github.com/sylvaindethier/nvm-test-plugin-travis.git"
   },
   "keywords": [
-    "travis",
     "nvm-test",
     "nvm",
-    "test"
+    "test",
+    "travis",
+    "travisci"
   ],
   "author": "Sylvain Dethier",
   "license": "MIT",
